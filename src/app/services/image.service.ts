@@ -8,7 +8,7 @@ import { Image } from '../models/image.model';
 })
 export class ImageService {
 
-  URL = 'http://localhost:4000/api/getImages'
+  URL = 'https://image-finder-server-production.up.railway.app/api/getImages'
 
   constructor(private http: HttpClient) { }
 

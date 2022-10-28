@@ -1,0 +1,78 @@
+<div
+  class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex justify-center items-center"
+  id="imageModal"
+  *ngIf="showModal"
+
+>
+  <div class="flex flex-col w-1/2 h-[80vh]" [@open]="flipInX">
+    <button
+      class="text-white text-2xl place-self-end hover:bg-red-500 rounded-lg p-2 transition-colors"
+      (click)="displayModal()"
+    >
+      X
+    </button>
+    <div class="bg-black rounded-lg p-3">
+      <div class="text-white text-2xl text-center">
+        by
+        <a
+          href="{{selectedImage.photographer_url}}"
+          class="text-blue-400 cursor-pointer hover:text-blue-600 font-bold"
+          >@{{selectedImage.photographer}}</a
+        >
+
+      </div>
+      <div class="flex justify-around items-center m-5">
+        <div class="w-1/2 h-full">
+          <img
+            src="{{selectedImage.src.large}}"
+            width="100%"
+            height="100%"
+            alt="{{selectedImage.alt}}"
+            quality="{70}"
+            loading="lazy"
+            class=""
+          />
+        </div>
+        <div class="flex flex-col items-end">
+          <h1 class="text-3xl text-white mb-10">Descargar</h1>
+          <a
+            type="button"
+            href="{{selectedImage.src.original}}"
+            class="bg-green-700 p-2 rounded-md my-3 text-center text-xl transition-all hover:scale-110 hover:bg-blue-600"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Original
+          </a>
+          <a
+            type="button"
+            href="{{selectedImage.src.large}}"
+            class="bg-green-700 p-2 rounded-md my-3 text-center text-lg transition-all hover:scale-110 hover:bg-blue-600"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Grande
+          </a>
+          <a
+            type="button"
+            href="{{selectedImage.src.medium}}"
+            class="bg-green-700 p-2 rounded-md my-3 text-center text-base transition-all hover:scale-110 hover:bg-blue-600"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Mediano
+          </a>
+          <a
+            type="button"
+            href="{{selectedImage.src.small}}"
+            class="bg-green-700 p-2 rounded-md my-3 text-center text-sm transition-all hover:scale-110 hover:bg-blue-600"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Pequeño
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

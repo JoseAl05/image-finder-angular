@@ -1,0 +1,25 @@
+<div
+  infinite-scroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="1000"
+  (scrolled)="onScroll()"
+  class="columns-1 md:columns-2 lg:columns-3 gap-2"
+>
+  <div *ngIf="listImages !== undefined && listImages !== null">
+    <div
+      class="w-full p-2 break-inside-avoid mb-4"
+      *ngFor="let images of listImages"
+    >
+      <a type="button" class="cursor-pointer" (click)="toggleModal();setImage(images)">
+        <img
+          src="{{ images.src.large }}"
+          width="1920"
+          height="1080"
+          alt="{{ images.alt }}"
+          loading="lazy"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+<app-image-modal [showModal]="showModal" (toggleModal)="toggleModal()" [selectedImage]="selectedImage"></app-image-modal>

@@ -1,0 +1,50 @@
+<div class="flex flex-col items-center relative h-screen pt-96">
+  <h1 class="text-5xl text-white text-center">IMAGES</h1>
+  <form
+    class="w-full flex flex-col items-center"
+    [formGroup]="searchForm"
+    (ngSubmit)="getImages()"
+  >
+    <label class="block relative w-1/2" for="'query">
+      <span
+        class="absolute inset-y-10 rounded-md left-0 right-20 flex items-center w-8 bg-slate-500 h-10"
+      >
+        <svg
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          view-box="0 0 24 24"
+          class="pointer-events-none w-8 h-6"
+        >
+          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </span>
+      <input
+        class="rounded-lg mt-10 p-2 w-full pl-10"
+        formControlName="query"
+        id="query"
+        name="query"
+        required
+      />
+      <div
+        class="text-red-600 text-sm"
+        *ngIf="
+          searchForm.get('query')?.hasError('required') &&
+          searchForm.get('query')?.touched
+        "
+      >
+        <span> This field can't be blank! </span>
+      </div>
+    </label>
+    <button
+      type="submit"
+      class="text-white mt-5 bg-black p-1 text-lg rounded-lg w-1/2 opacity-70"
+      [disabled]="!searchForm.valid"
+    >
+      Search!
+    </button>
+  </form>
+</div>
+<app-list-images [listImages]="listImages" [query]="query" [page]="page"></app-list-images>
